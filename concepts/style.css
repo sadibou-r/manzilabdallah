@@ -1,0 +1,385 @@
+:root {
+    --color-primary: #1E4D2B;
+    --color-primary-dark: #0F2815;
+    --color-accent: #C5A059;
+    --color-cream: #F9F7F2;
+    --color-sand: #E5E0D8;
+    --color-white: #FFFFFF;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- Common Utilties --- */
+.highlight {
+    color: var(--color-accent);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* --- Navigation for Concepts --- */
+.back-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.back-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- Phone Mockup (Shared) --- */
+.phone-mockup {
+    width: 300px;
+    height: 600px;
+    background: #000;
+    border-radius: 40px;
+    border: 8px solid #333;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.phone-mockup::before {
+    /* Notch */
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 20;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background: #FAFAF9;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- THEME 1: QURAN (Light/Minimalist) --- */
+body.theme-quran {
+    background-color: var(--color-cream);
+    color: var(--color-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.theme-quran .bg-text {
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: 15rem;
+    opacity: 0.03;
+    color: var(--color-primary);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.theme-quran .content {
+    text-align: center;
+    z-index: 5;
+    margin-bottom: 2rem;
+}
+
+.theme-quran h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+}
+
+.theme-quran p {
+    max-width: 500px;
+    margin: 1rem auto;
+    opacity: 0.8;
+}
+
+.theme-quran .phone-mockup {
+    border-color: #d4d4d4;
+    box-shadow: 0 30px 60px rgba(30, 77, 43, 0.15);
+}
+
+
+/* --- THEME 2: RAMADAN (Dark/Midnight) --- */
+body.theme-ramadan {
+    background: radial-gradient(circle at 50% 20%, #1a3c26 0%, #051008 100%);
+    color: var(--color-white);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.theme-ramadan .lantern {
+    position: absolute;
+    top: -20px;
+    width: 4px;
+    height: 100px;
+    background: var(--color-accent);
+}
+
+.theme-ramadan .lantern::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -18px;
+    width: 40px;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C5A059"><path d="M12 2L9 4h6l-3-2zM6 6v10c0 3.31 2.69 6 6 6s6-2.69 6-6V6H6zm6 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>') no-repeat center;
+    filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.6));
+}
+
+.theme-ramadan .l1 {
+    left: 20%;
+    height: 150px;
+    animation: swing 4s infinite ease-in-out;
+}
+
+.theme-ramadan .l2 {
+    right: 20%;
+    height: 120px;
+    animation: swing 5s infinite ease-in-out reverse;
+}
+
+.theme-ramadan .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.theme-ramadan h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+}
+
+@keyframes swing {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/* --- THEME 3: TASBIH (Split/Dynamic) --- */
+body.theme-tasbih {
+    background: linear-gradient(135deg, var(--color-primary) 50%, var(--color-gold, #e0c075) 50%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.theme-tasbih .container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.theme-tasbih .text-side {
+    flex: 1;
+    color: var(--color-white);
+    text-align: right;
+}
+
+.theme-tasbih .text-side h1 {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+}
+
+.theme-tasbih .phone-side {
+    flex: 1;
+}
+
+.theme-tasbih .phone-mockup {
+    transform: rotate(-10deg) translateY(20px);
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+}
+
+.theme-tasbih .phone-mockup:hover {
+    transform: rotate(0) scale(1.05);
+}
+
+/* --- THEME 4: PRAYER (Elegant/Grid) --- */
+body.theme-prayer {
+    background-color: var(--color-sand);
+    color: var(--color-primary);
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.theme-prayer .left-panel {
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.theme-prayer h1 {
+    font-size: 4.5rem;
+    line-height: 1;
+    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+}
+
+.theme-prayer .border-deco {
+    width: 100px;
+    height: 4px;
+    background: var(--color-accent);
+    margin-bottom: 2rem;
+}
+
+.theme-prayer .right-panel {
+    position: relative;
+    overflow: hidden;
+    background: url('https://images.unsplash.com/photo-1596627689623-644cb36a30f7?q=80&w=2070&auto=format&fit=crop') center/cover;
+    /* Placeholder arch */
+}
+
+.theme-prayer .right-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 77, 43, 0.3);
+}
+
+.theme-prayer .phone-mockup {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    transform: scale(0.9);
+    z-index: 10;
+}
+
+/* --- Dashboard Index --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.concept-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2px;
+    /* Border trick */
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: block;
+}
+
+.concept-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-preview {
+    height: 200px;
+    background: #ddd;
+    border-radius: 18px 18px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.card-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-heading);
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Dashboard Previews */
+.bg-quran {
+    background: var(--color-cream);
+    color: var(--color-primary);
+}
+
+.bg-ramadan {
+    background: var(--color-primary-dark);
+    color: var(--color-accent);
+}
+
+.bg-tasbih {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+.bg-prayer {
+    background: var(--color-sand);
+    color: var(--color-primary);
+}

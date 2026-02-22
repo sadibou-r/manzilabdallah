@@ -1,22 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Toast Notification Logic ---
-    const iosButton = document.getElementById('iosButton');
-    const toast = document.getElementById('toast');
-    let toastTimeout;
-
-    if (iosButton) {
-        iosButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            toast.classList.remove('hidden');
-
-            if (toastTimeout) clearTimeout(toastTimeout);
-
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        });
-    }
 
     // --- Scroll Animations (Intersection Observer) ---
     const animatedElements = document.querySelectorAll('.fade-in-up');

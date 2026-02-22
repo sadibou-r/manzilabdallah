@@ -1,0 +1,160 @@
+:root {
+    --color-accent: #C5A059;
+    --color-white: #FFFFFF;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app-logo {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.square-poster {
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at 50% 20%, #1a3c26 0%, #051008 100%);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.highlight {
+    color: var(--color-accent);
+}
+
+.lantern {
+    position: absolute;
+    top: -20px;
+    width: 4px;
+    height: 100px;
+    background: var(--color-accent);
+    z-index: 5;
+}
+
+.lantern::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -18px;
+    width: 40px;
+    height: 50px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C5A059"><path d="M12 2L9 4h6l-3-2zM6 6v10c0 3.31 2.69 6 6 6s6-2.69 6-6V6H6zm6 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>') no-repeat center;
+    filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.6));
+}
+
+.l1 {
+    left: 15%;
+    height: 180px;
+    animation: swing 4s infinite ease-in-out;
+}
+
+.l2 {
+    right: 15%;
+    height: 140px;
+    animation: swing 5s infinite ease-in-out reverse;
+}
+
+@keyframes swing {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+.content {
+    text-align: center;
+    z-index: 10;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
+}
+
+.top-label {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--color-accent);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.phone-mockup {
+    width: 280px;
+    height: 560px;
+    background: #000;
+    border-radius: 40px;
+    border: 8px solid #222;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.phone-mockup::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 20px;
+    background: #000;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background: #0F2815;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 100;
+}
